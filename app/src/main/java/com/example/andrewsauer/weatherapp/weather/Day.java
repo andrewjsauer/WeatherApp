@@ -82,7 +82,6 @@ public class Day implements Parcelable {
         dest.writeDouble(mTemperatureMax);
         dest.writeString(mIcon);
         dest.writeString(mTimezone);
-
     }
 
     private Day(Parcel in) {
