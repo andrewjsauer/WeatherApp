@@ -29,9 +29,13 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".UI.DailyForecastActivity">
+        <activity
+            android:name=".UI.DailyForecastActivity"
+            android:parentActivityName=".UI.MainActivity">
         </activity>
-        <activity android:name=".UI.HourlyForecastActivity">
+        <activity
+            android:name=".UI.HourlyForecastActivity"
+            android:parentActivityName=".UI.MainActivity">
         </activity>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

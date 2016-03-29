@@ -7,12 +7,11 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import android.location.Location;
-import android.location.LocationProvider;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,7 +26,6 @@ import com.example.andrewsauer.weatherapp.weather.Forecast;
 import com.example.andrewsauer.weatherapp.weather.Hour;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
@@ -55,16 +53,8 @@ public class MainActivity extends AppCompatActivity implements
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final String DAILY_FORECAST = "DAILY_FORECAST";
     public static final String HOURLY_FORECAST = "HOURLY_FORECAST";
+
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-
-    private Forecast mForecast;
-    private GoogleApiClient mGoogleApiClient;
-    private LocationRequest mLocationRequest;
-
-    private double mCurrentLatitude;
-    private double mCurrentLongitude;
-
-
     @Bind(R.id.timeLabel)
     TextView mTimeLabel;
     @Bind(R.id.temperatureLabel)
@@ -83,7 +73,11 @@ public class MainActivity extends AppCompatActivity implements
     ProgressBar mProgressBar;
     @Bind(R.id.locationLabel)
     TextView mLocationLabel;
-
+    private Forecast mForecast;
+    private GoogleApiClient mGoogleApiClient;
+    private LocationRequest mLocationRequest;
+    private double mCurrentLatitude;
+    private double mCurrentLongitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements
         mLocationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(10 * 1000)        // 10 seconds, in milliseconds
-                .setFastestInterval(1 * 1000); // 1 second, in milliseconds
+                .setFastestInterval(1000); // 1 second, in milliseconds
 
         Log.d(TAG, "Main UI is running");
     }
@@ -316,16 +310,28 @@ public class MainActivity extends AppCompatActivity implements
 
     @OnClick(R.id.dailyButton)
     public void startDailyActivity(View view) {
-        Intent intent = new Intent(this, DailyForecastActivity.class);
-        intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
-        startActivity(intent);
+
+        if (mForecast == null) {
+            Toast.makeText(MainActivity.this, R.string.no_data_to_show, Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, DailyForecastActivity.class);
+            intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
+            startActivity(intent);
+        }
+
     }
 
     @OnClick(R.id.hourlyButton)
     public void startHourlyActivity(View view) {
-        Intent intent = new Intent(this, HourlyForecastActivity.class);
-        intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyForecast());
-        startActivity(intent);
+
+        if (mForecast == null) {
+            Toast.makeText(MainActivity.this, R.string.no_data_to_show, Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, HourlyForecastActivity.class);
+            intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyForecast());
+            startActivity(intent);
+        }
+
     }
 
     private void handleNewLocation(Location location) {

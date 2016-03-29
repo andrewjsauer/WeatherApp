@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingBottom="4dp"
-    android:paddingLeft="50dp"
-    android:paddingRight="32dp"
-    android:paddingTop="4dp"
-    tools:background="#ffaa00">
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="4dp"
+                android:paddingLeft="50dp"
+                android:paddingRight="32dp"
+                android:paddingTop="4dp"
+                tools:background="#01243B">
 
 
     <ImageView
@@ -17,7 +17,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:src="@mipmap/bg_temperature" />
+        android:src="@mipmap/bg_temperature"/>
 
     <ImageView
         android:id="@+id/iconView"
@@ -27,7 +27,7 @@
         android:layout_toEndOf="@+id/circleImageView"
         android:layout_toRightOf="@+id/circleImageView"
         android:paddingLeft="10dp"
-        android:src="@mipmap/clear_day" />
+        android:src="@mipmap/clear_day"/>
 
     <TextView
         android:id="@+id/dayNameLabel"
@@ -36,10 +36,10 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/iconView"
         android:layout_toRightOf="@+id/iconView"
+        android:paddingLeft="10dp"
         android:textColor="@android:color/white"
         android:textSize="20sp"
-        tools:text="Wednesday"
-        android:paddingLeft="10dp"/>
+        tools:text="Wednesday"/>
 
     <TextView
         android:id="@+id/temperatureLabel"
@@ -49,8 +49,9 @@
         android:layout_alignLeft="@+id/circleImageView"
         android:layout_alignRight="@+id/circleImageView"
         android:layout_alignTop="@+id/circleImageView"
+        android:layout_centerInParent="true"
         android:gravity="center"
         android:text="New Text"
-        android:textColor="#00B28A"
-        tools:text="100" />
+        android:textColor="#01243B"
+        tools:text="100"/>
 </RelativeLayout>

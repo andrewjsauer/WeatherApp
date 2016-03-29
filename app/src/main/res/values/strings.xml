@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeatherApp</string>
+    <string name="app_name">Weather App</string>
     <string name="error_title">Oops!</string>
     <string name="error_message">There was an error</string>
     <string name="error_button_ok">OK</string>
@@ -7,4 +7,10 @@
     <string name="no_daily_forecast_data">There is no data to display</string>
     <string name="today_label_7_day_forecast">Today</string>
     <string name="title_activity_maps">Map</string>
+    <string name="seven_day_forecast">7-Day Forecast</string>
+    <string name="no_data_to_show">No data to show</string>
+    <string name="hourly_forecast_title">Hourly Forecast</string>
+    <string name="seven_day_forecast_title">7-Day Forecast</string>
+    <string name="dashed_line">--</string>
+    <string name="fahrenheit">F</string>
 </resources>

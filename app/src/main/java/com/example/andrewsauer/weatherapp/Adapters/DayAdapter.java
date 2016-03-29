@@ -11,9 +11,6 @@ import android.widget.TextView;
 import com.example.andrewsauer.weatherapp.R;
 import com.example.andrewsauer.weatherapp.weather.Day;
 
-/**
- * Created by andrewsauer on 11/24/15.
- */
 public class DayAdapter extends BaseAdapter {
 
     private Context mContext;
@@ -75,8 +72,8 @@ public class DayAdapter extends BaseAdapter {
     }
 
     private static class ViewHolder {
-        ImageView iconImageView; //public by default
-        TextView temperatureLabel; //public by default
-        TextView dayLabel; //public by default
+        ImageView iconImageView;  //public by default
+        TextView temperatureLabel;
+        TextView dayLabel;
     }
 }

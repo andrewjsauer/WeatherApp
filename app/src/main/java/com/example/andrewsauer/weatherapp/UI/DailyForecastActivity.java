@@ -1,9 +1,10 @@
 package com.example.andrewsauer.weatherapp.UI;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -12,9 +13,7 @@ import android.widget.Toast;
 
 import com.example.andrewsauer.weatherapp.Adapters.DayAdapter;
 import com.example.andrewsauer.weatherapp.R;
-import com.example.andrewsauer.weatherapp.weather.Current;
 import com.example.andrewsauer.weatherapp.weather.Day;
-import com.example.andrewsauer.weatherapp.weather.Forecast;
 
 import java.util.Arrays;
 
@@ -24,18 +23,24 @@ import butterknife.ButterKnife;
 public class DailyForecastActivity extends AppCompatActivity {
 
 
-    private Day[] mDays;
-
     @Bind(android.R.id.list) ListView mListView;
     @Bind(android.R.id.empty) TextView mTextView;
-    @Bind(R.id.locationText) TextView mLocationText;
-
+    @Bind(R.id.toolbar_main_activity)
+    Toolbar mToolbar;
+    private Day[] mDays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_forecast);
         ButterKnife.bind(this);
+
+        if (getSupportActionBar() != null) {
+            setSupportActionBar(mToolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(R.string.seven_day_forecast_title);
+        }
+
 
         Intent intent = getIntent();
         Parcelable[] parcelables = intent.getParcelableArrayExtra(MainActivity.DAILY_FORECAST);
